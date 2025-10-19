@@ -7,14 +7,20 @@ server:
     uri-encoding: utf-8
 
 spring:
-  main:
-    banner-mode: off
-  servlet:
-    multipart:
-      enabled: true
-      file-size-threshold: 0
-      max-file-size: 10MB
-      max-request-size: 100MB
+  quartz:
+    # 让 Spring 管理 Quartz 调度器的生命周期（自动启动/关闭）
+    auto-startup: true
+    # 调度器启动模式：ALWAYS 表示无论之前状态如何，都重新启动
+    startup-delay: 0
+    job-store-type: memory # 使用内存存储（与日志中的 RAMJobStore 匹配）
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: quartzScheduler
+            instanceId: AUTO
+          threadPool:
+            threadCount: 10 # 与日志中的线程数一致
   #数据库连接配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -29,21 +35,21 @@ spring:
     cache: false
 
 #轮播图图片存储地址
-carouselImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/carouselImage/
+carouselImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/carouselImage/
 #设备类型图片存储地址
-equipmentTypeImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/equipmentTypeImage/
+equipmentTypeImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/equipmentTypeImage/
 #文章正文图片存储地址
-articleImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/articleImage/
+articleImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/articleImage/
 #客户头像图片存储地址
-customerImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/customerImage/
+customerImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/customerImage/
 #医院人员头像图片存储地址
-userImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/userImage/
+userImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/userImage/
 #商品图片存储地址
-goodsImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/goodsImage/
+goodsImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/goodsImage/
 #宠物图片存储地址
-petImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/petImage/
+petImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/petImage/
 #宠物病情图片存储地址
-inquiryImageFilePath: C://pets/PetHospital-master/PetHospital-master/src/main/webapp/static/images/inquiryImage/
+inquiryImageFilePath: C://pets/PetHospital-master/src/main/webapp/static/images/inquiryImage/
 
 #mybatis的相关配置
 mybatis:

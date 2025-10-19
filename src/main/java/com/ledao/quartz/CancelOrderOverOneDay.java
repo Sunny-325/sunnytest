@@ -1,8 +1,7 @@
 package com.ledao.quartz;
 
 import com.ledao.service.SaleListService;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Component;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
@@ -14,8 +13,7 @@ import javax.annotation.Resource;
  * @company
  * @create 2020-05-09 20:53
  */
-@Configuration
-@EnableScheduling
+@Component
 public class CancelOrderOverOneDay {
 
     @Resource
